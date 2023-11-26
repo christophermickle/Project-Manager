@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-function ProjectsSidebar({onStartAddProject}) {
+function ProjectsSidebar({onStartAddProject, projects}) {
   return (
     <aside className='w-1/3 px-8 py-16 bg-slate-900 text-slate-50 md:w-72, rounded-r-xl'>
       <h2 className='mb-8 font-bold uppercase md:text-xl text-slate-200'>
@@ -10,7 +10,10 @@ function ProjectsSidebar({onStartAddProject}) {
         <Button onClick={onStartAddProject}>+ Add a Project
         </Button>
       </div>
-      <ul></ul>
+      <ul>{projects.map(project=><li key={project.id}>
+        <button className="w-full px-2 py-1 my-1 text-left rounded-sm text-slate-400 hover:text-slate-200 hover:bg-slate-800"> {project.title}</button>
+      </li>)}
+      </ul>
     </aside>
   );
 }
