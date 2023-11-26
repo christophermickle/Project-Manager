@@ -3,7 +3,7 @@ import ProjectsSidebar from "./components/ProjectsSidebar";
 
 function App(): JSX.Element | undefined {
   return (
-      <main className="h-screen my-8 flex gap-8 ">
+      <main className="flex h-screen gap-8 my-8 mr-4">
         <ProjectsSidebar />
         <NewProject/>
       </main>

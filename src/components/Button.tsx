@@ -1,4 +1,8 @@
-function Button({ children, ...props }) {
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  children: React.ReactNode; // typing for children
+};
+
+function Button({ children, ...props }: ButtonProps) {
   return (
     <div>
       <button
