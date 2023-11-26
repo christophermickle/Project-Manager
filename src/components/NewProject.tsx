@@ -2,11 +2,15 @@ import { useRef } from "react";
 import Input from "./Input";
 
 function NewProject() {
-  // useRef<HTMLInputElement | HTMLTextAreaElement>(null) allows the ref to be an input or a textarea
   const title = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
   const description = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
   const dueDate = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
 
+  // const handleSave =()=> {
+  //   const enteredTitle=title.current!.value
+  //   const enteredDescription=description.current!.value
+  //   const enteredDueDate=dueDate.current!.value
+  // }
   return (
     <div className='w-[35rem] mt-16'>
       <menu className='flex items-center justify-end gap-4 my-4'>

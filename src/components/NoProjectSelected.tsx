@@ -1,7 +1,7 @@
 import noProjectImage from "../../public/no-projects.png";
 import Button from "./Button";
 
-function NoProjectSelected() {
+function NoProjectSelected({onStartAddProject}) {
   return (
     <div className='w-2/3 mt-24 text-center'>
       <img
@@ -16,7 +16,7 @@ function NoProjectSelected() {
         Please selet a project, or get started with a new one.
       </p>
       <p className='mt-8'>
-        <Button>Create new project</Button>
+        <Button onClick={onStartAddProject}>Create new project</Button>
       </p>
     </div>
   );
