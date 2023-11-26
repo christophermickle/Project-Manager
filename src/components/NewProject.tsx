@@ -1,16 +1,19 @@
 import { useRef } from "react";
 import Input from "./Input";
 
-function NewProject() {
+function NewProject({ onAdd }) { // Destructure onAdd from props
   const title = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
   const description = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
   const dueDate = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
 
-  // const handleSave =()=> {
-  //   const enteredTitle=title.current!.value
-  //   const enteredDescription=description.current!.value
-  //   const enteredDueDate=dueDate.current!.value
-  // }
+  const handleSave = () => {
+    const enteredTitle = title.current!.value;
+    const enteredDescription = description.current!.value;
+    const enteredDueDate = dueDate.current!.value;
+
+    onAdd({ title: enteredTitle, description: enteredDescription, dueDate: enteredDueDate });
+  }
+
   return (
     <div className='w-[35rem] mt-16'>
       <menu className='flex items-center justify-end gap-4 my-4'>
@@ -20,7 +23,9 @@ function NewProject() {
           </button>
         </li>
         <li>
-          <button className='px-6 py-2 rounded-md bg-slate-800 text-slate-50 hover:bg-slate-950'>
+          <button 
+            onClick={handleSave} 
+            className='px-6 py-2 rounded-md bg-slate-800 text-slate-50 hover:bg-slate-950'>
             Save
           </button>
         </li>
