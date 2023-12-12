@@ -19,9 +19,7 @@ function NoProjectSelected({ onStartAddProject }: NoProjectSelectedProps) {
       <p className='mb-4 text-slate-400'>
         Please select a project, or get started with a new one.
       </p>
-      <p className='mt-8'>
-        <Button onClick={onStartAddProject}>Create new project</Button>
-      </p>
+      <Button onClick={onStartAddProject}>Create new project</Button>
     </div>
   );
 }
