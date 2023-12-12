@@ -1,7 +1,7 @@
 import noProjectImage from "../assets/no-projects.png";
 import Button from "./Button";
 
-function NoProjectSelected({onStartAddProject}) {
+function NoProjectSelected({ onStartAddProject }) {
   return (
     <div className='w-2/3 mt-24 text-center'>
       <img

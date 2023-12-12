@@ -40,7 +40,7 @@ function App(): JSX.Element | undefined {
     content = <NoProjectSelected onStartAddProject={handleStartAddProject} />;
   }
   return (
-    <main className='flex h-screen gap-8 my-8 mr-4'>
+    <main className="flex h-screen gap-8 my-8 mr-4">
       <ProjectsSidebar
         onStartAddProject={handleStartAddProject}
         projects={projectsState.projects}
