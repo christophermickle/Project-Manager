@@ -1,6 +1,6 @@
-import { useRef } from "react";
+import  { useRef } from "react";
 import Input from "./Input";
-import Modal from "./Modal";
+import Modal, { ModalRef } from "./Modal"; // Import Modal and ModalRef
 
 type NewProjectProps = {
   onAdd: (projectData: {
@@ -15,7 +15,7 @@ function NewProject({ onAdd, onCancel }: NewProjectProps) {
   const title = useRef<HTMLInputElement>(null);
   const description = useRef<HTMLTextAreaElement>(null);
   const dueDate = useRef<HTMLInputElement>(null);
-  const modal = useRef<HTMLDialogElement>(null);
+  const modal = useRef<ModalRef>(null); // Use ModalRef type here
 
   const handleSave = () => {
     const enteredTitle = title.current?.value ?? "";
@@ -27,7 +27,9 @@ function NewProject({ onAdd, onCancel }: NewProjectProps) {
       enteredDescription.trim() === "" ||
       enteredDueDate.trim() === ""
     ) {
-      modal.current?.open();
+      if (modal.current !== null) {
+        modal.current.open();
+      }
       return;
     }
     onAdd({
@@ -72,7 +74,7 @@ function NewProject({ onAdd, onCancel }: NewProjectProps) {
         <div>
           <Input inputProps={{ type: "text" }} ref={title} label='Title' />
           <Input
-            textareaProps={{}}
+            textareaProps={{}} // Pass an empty object for textareaProps
             ref={description}
             label='Description'
             textarea

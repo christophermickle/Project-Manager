@@ -6,7 +6,7 @@ function Button({ children, ...props }: ButtonProps) {
   return (
     <div>
       <button
-        className="px-4 py-2 text-xs rounded-md md:text-base bg-slate-700 text-slate-400 hover:bg-slate-600 hover:text-slate-100"
+        className="px-4 py-2 text-xs rounded-md md:text-base bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-slate-200"
         {...props}
       >
         {children}

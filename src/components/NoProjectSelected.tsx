@@ -1,7 +1,11 @@
 import noProjectImage from "../assets/no-projects.png";
 import Button from "./Button";
 
-function NoProjectSelected({ onStartAddProject }) {
+interface NoProjectSelectedProps {
+  onStartAddProject: () => void; // Specify the type for onStartAddProject
+}
+
+function NoProjectSelected({ onStartAddProject }: NoProjectSelectedProps) {
   return (
     <div className="w-2/3 mt-24 text-center">
       <img
@@ -13,7 +17,7 @@ function NoProjectSelected({ onStartAddProject }) {
         No project selected
       </h2>
       <p className="mb-4 text-slate-400">
-        Please selet a project, or get started with a new one.
+        Please select a project, or get started with a new one.
       </p>
       <p className="mt-8">
         <Button onClick={onStartAddProject}>Create new project</Button>

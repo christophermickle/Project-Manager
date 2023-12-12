@@ -3,11 +3,22 @@ import ProjectsSidebar from "./components/ProjectsSidebar";
 import NoProjectSelected from "./components/NoProjectSelected";
 import NewProject from "./components/NewProject";
 
-function App(): JSX.Element | undefined {
-  const [projectsState, setProjectsState] = useState({
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  dueDate: string;
+}
+
+function App(): JSX.Element {
+  const [projectsState, setProjectsState] = useState<{
+    selectedProjectId: number | null | undefined;
+    projects: Project[];
+  }>({
     selectedProjectId: undefined,
     projects: [],
   });
+
   function handleStartAddProject() {
     setProjectsState((prevState) => {
       return {
@@ -16,6 +27,7 @@ function App(): JSX.Element | undefined {
       };
     });
   }
+
   const handleCancelAddProject = () => {
     setProjectsState((prevState) => {
       return {
@@ -25,9 +37,9 @@ function App(): JSX.Element | undefined {
     });
   };
 
-  function handleAddProject(projectData) {
+  function handleAddProject(projectData: Omit<Project, "id">) {
     setProjectsState((prevState) => {
-      const newProject = {
+      const newProject: Project = {
         ...projectData,
         id: Math.random(),
       };
@@ -49,6 +61,7 @@ function App(): JSX.Element | undefined {
   } else if (projectsState.selectedProjectId === undefined) {
     content = <NoProjectSelected onStartAddProject={handleStartAddProject} />;
   }
+
   return (
     <main className="flex h-screen gap-8 my-8 mr-4">
       <ProjectsSidebar
