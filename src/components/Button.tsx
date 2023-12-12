@@ -1,5 +1,5 @@
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  children: React.ReactNode; // typing for children
+  children: React.ReactNode;
 };
 
 function Button({ children, ...props }: ButtonProps) {
