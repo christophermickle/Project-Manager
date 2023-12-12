@@ -1,4 +1,3 @@
-import React from "react"; // Import React
 import Button from "./Button";
 
 interface Project {
