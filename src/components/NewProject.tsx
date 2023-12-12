@@ -8,9 +8,10 @@ type NewProjectProps = {
     description: string;
     dueDate: string;
   }) => void;
+  onCancel: () => void;
 };
 
-function NewProject({ onAdd }: NewProjectProps) {
+function NewProject({ onAdd, onCancel }: NewProjectProps) {
   const title = useRef<HTMLInputElement>(null);
   const description = useRef<HTMLTextAreaElement>(null);
   const dueDate = useRef<HTMLInputElement>(null);
@@ -38,42 +39,45 @@ function NewProject({ onAdd }: NewProjectProps) {
 
   return (
     <>
-      <Modal ref={modal} buttonCaption="Close">
-        <h2 className="my-4 text-xl font-bold text-slate-900 ">
+      <Modal ref={modal} buttonCaption='Close'>
+        <h2 className='my-4 text-xl font-bold text-slate-900 '>
           Invalid Input
         </h2>
-        <p className="mb-4 text-slate-800">
+        <p className='mb-4 text-slate-800'>
           Oops... Looks like you forgot to input a value.
         </p>
-        <p className="mb-4 text-slate-800">
+        <p className='mb-4 text-slate-800'>
           Please ensure you input a valid value for every input field.
         </p>
       </Modal>
-      <div className="w-[35rem] mt-16">
-        <menu className="flex items-center justify-end gap-4 my-4">
+      <div className='w-[35rem] mt-16'>
+        <menu className='flex items-center justify-end gap-4 my-4'>
           <li>
-            <button className="text-slate-800 hover:text-slate-950">
+            <button
+              onClick={onCancel}
+              className='text-slate-800 hover:text-slate-950'
+            >
               Cancel
             </button>
           </li>
           <li>
             <button
               onClick={handleSave}
-              className="px-6 py-2 rounded-md bg-slate-800 text-slate-50 hover:bg-slate-950"
+              className='px-6 py-2 rounded-md bg-slate-800 text-slate-50 hover:bg-slate-950'
             >
               Save
             </button>
           </li>
         </menu>
         <div>
-          <Input inputProps={{ type: "text" }} ref={title} label="Title" />
+          <Input inputProps={{ type: "text" }} ref={title} label='Title' />
           <Input
             textareaProps={{}}
             ref={description}
-            label="Description"
+            label='Description'
             textarea
           />
-          <Input inputProps={{ type: "date" }} ref={dueDate} label="Due Date" />
+          <Input inputProps={{ type: "date" }} ref={dueDate} label='Due Date' />
         </div>
       </div>
     </>
