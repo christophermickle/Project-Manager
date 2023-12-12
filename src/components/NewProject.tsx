@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import Input from "./Input";
+import Modal from "./Modal";
 
 type NewProjectProps = {
   onAdd: (projectData: {
@@ -13,12 +14,21 @@ function NewProject({ onAdd }: NewProjectProps) {
   const title = useRef<HTMLInputElement>(null);
   const description = useRef<HTMLTextAreaElement>(null);
   const dueDate = useRef<HTMLInputElement>(null);
+  const modal =useRef<HTMLDialogElement>(null);
 
   const handleSave = () => {
     const enteredTitle = title.current?.value ?? "";
     const enteredDescription = description.current?.value ?? "";
     const enteredDueDate = dueDate.current?.value ?? "";
 
+    if (
+      (enteredTitle.trim() === "") ||
+      (enteredDescription.trim() === "") ||
+      (enteredDueDate.trim() === "")
+    ) {
+      modal.current?.open();
+      return
+    }
     onAdd({
       title: enteredTitle,
       description: enteredDescription,
@@ -27,6 +37,12 @@ function NewProject({ onAdd }: NewProjectProps) {
   };
 
   return (
+    <>
+    <Modal ref={modal}>
+      <h2>Invalid Input</h2>
+      <p>Oops... Looks like you forgot to input a value.</p>
+      <p>Please ensure you input a valid value for every input field.</p>
+    </Modal>
     <div className='w-[35rem] mt-16'>
       <menu className='flex items-center justify-end gap-4 my-4'>
         <li>
@@ -54,7 +70,7 @@ function NewProject({ onAdd }: NewProjectProps) {
         <Input inputProps={{ type: "date" }} ref={dueDate} label='Due Date' />
       </div>
     </div>
-  );
+  </>);
 }
 
 export default NewProject;

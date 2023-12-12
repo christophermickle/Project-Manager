@@ -2,7 +2,6 @@ import { useState } from "react";
 import ProjectsSidebar from "./components/ProjectsSidebar";
 import NoProjectSelected from "./components/NoProjectSelected";
 import NewProject from "./components/NewProject";
-// const addProject = () => {};
 
 function App(): JSX.Element | undefined {
   const [projectsState, setProjectsState] = useState({
